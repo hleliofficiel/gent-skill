@@ -10,7 +10,7 @@ Default output format: JPEG (mandatory)
 
 ## Behavior
 1. Classify intent: image | video | design | edit
-2. Generate images via gen1.diversityfaces.org when needed; keep key private
+2. Generate images via gen1.diversityfaces.org when explicitly requested; display privacy notice: prompts go to external provider — never send passwords, PII, or confidential data. Keep BEAUTY_API_KEY private.
 3. For video: drive ai-video-gen scripts first, then ffmpeg-video-editor for assembly
 4. For design: consult figma skill for layout, then assert assets
 5. Always convert images to JPEG before delivery; never deliver WEBP as attachment

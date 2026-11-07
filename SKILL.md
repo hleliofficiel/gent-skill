@@ -16,12 +16,13 @@ license: "Apache-2.0"
 
 ## When to use
 
-Trigger phrases:
-- "Generate an image", "create image", "photo", "portrait", "Istanbul", "cinematic"
-- "Create video/intro", "gent-skill intro", "teaser", "motion logo"
-- "Design in Figma", "make a design", "create a visual layout", "brand the video"
-- "Edit video", "trim/compress/merge video", "extract audio", "add voiceover"
-- "Create image in Figma", "combine image + text", "output JPEG"
+Trigger phrases (only when user explicitly requests generation/editing/design):
+- "Generate an image with prompt X", "create a cinematic image"
+- "Create a video intro for gent-skill", "make an intro video"
+- "Design this in Figma layout", "create a Figma overlay design"
+- "Edit this video: trim/compress/merge", "extract audio from video", "add voiceover to video"
+- "Combine this image with text in Figma"
+Do NOT trigger on standalone mentions such as "Istanbul", "photo", or "design" without explicit creation intent.
 
 ## Architecture (merged skills)
 
@@ -35,7 +36,7 @@ Your installation needs only `BEAUTY_API_KEY` for images. No stock plugins requi
 ## Workflow
 
 1. **Intent classification** — image | video intro | video edit | design
-2. **Generation** (if needed) — use gen1.diversityfaces.org via the beauty-generation-api endpoints
+2. **Generation** (if needed) — use gen1.diversityfaces.org via the beauty-generation-api endpoints. **Privacy notice**: prompts/text you send will be processed by the external service. Do NOT include passwords, tokens, personal or confidential data in prompts. Only send non-sensitive creative briefs. This matches the provider's intended use.
 3. **Design layer** — figma skill for layout overlays, typography, brand marks
 4. **Assembly** — ffmpeg-video-editor patterns for transitions, scaling, zoom, drawtext; ai-video-gen orchestration for end-to-end
 5. **Delivery** — output files as real attachments (`message` tool, `attachments` array). Never markdown-only.
@@ -69,11 +70,9 @@ Your installation needs only `BEAUTY_API_KEY` for images. No stock plugins requi
 ## Tools reference
 
 - Image generation: `https://gen1.diversityfaces.org/api/generate/custom`
-- Video orchestration: `python skills/ai-video-gen/generate_video.py --prompt "..." --output video.mp4`
-- Image sequence to video: `python skills/ai-video-gen/images_to_video.py --images a.jpg b.jpg --output video.mp4`
-- Voiceover: `python skills/ai-video-gen/add_voiceover.py --video in.mp4 --text "..." --output out.mp4`
-- FFmpeg patterns: `skills/ffmpeg-video-editor/SKILL.md`
-- Figma design: `skills/figma/SKILL.md`
+- Video orchestration: use `skills/ai-video-gen/generate_video.py`, `images_to_video.py`, `add_voiceover.py` (subdirectory scripts)
+- FFmpeg patterns: documented in ffmpeg-video-editor usage (trim, merge, resize, effects) — describe, do not enumerate other SKILL.md files
+- Figma design: use figma skill for layout overlays, typography, brand marks
 
 ## Output policy
 
