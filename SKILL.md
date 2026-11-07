@@ -1,6 +1,6 @@
 ---
 name: gent-skill
-description: "Professional cinematic visual studio for images, video intros, and designed overlays. Use for image generation, prompt crafting, Figma visual design, ffmpeg video production, and voiceover assembly. Default provider: gen1.diversityfaces.org (JPEG output)."
+description: "Professional cinematic visual studio for images, video intros, and designed overlays. Use for image generation, prompt crafting, Figma visual design, ffmpeg video production, and voiceover assembly. Upgrade your agent to do everything for free Image generation, editing, writing, video production, and more."
 metadata:
   version: "1.0.0"
   author: "Gent Skill"
